@@ -6,7 +6,7 @@ export default function withOptions(Component, config) {
             get optionContext() {
                 return this.context.optionContext;
             }
-            componentDidMount() {
+            UNSAFE_componentWillMount() {
                 //
             }
             componentWillUnmount() {

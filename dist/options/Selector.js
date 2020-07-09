@@ -1,11 +1,8 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -26,11 +23,7 @@ function getComponentOptionValue(component) {
 var Selector = /** @class */ (function (_super) {
     __extends(Selector, _super);
     function Selector() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.optionContextUpdate = function () {
-            _this.forceUpdate();
-        };
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     Object.defineProperty(Selector.prototype, "optionContext", {
         get: function () {
@@ -44,7 +37,6 @@ var Selector = /** @class */ (function (_super) {
         var optionContext = this.optionContext;
         var defaultValue = (typeof defaultOption === 'string' ?
             defaultOption : getComponentOptionValue(defaultOption));
-        optionContext.addStateChangeListener(this.optionContextUpdate);
         optionContext.optionEnter(option.key);
         var optionState = optionContext.getOptionState(option.key);
         this.updateOptionValues();
@@ -56,7 +48,6 @@ var Selector = /** @class */ (function (_super) {
         this.updateOptionValues(nextProps);
     };
     Selector.prototype.componentWillUnmount = function () {
-        this.optionContext.removeStateChangeListener(this.optionContextUpdate);
         this.optionContext.optionExit(this.props.option.key);
     };
     Selector.prototype.render = function () {
@@ -75,7 +66,7 @@ var Selector = /** @class */ (function (_super) {
             return;
         }
         var _a = this.props, option = _a.option, children = _a.children;
-        var values = React.Children.map(children,
+        var values = React.Children.map(children, 
         // TODO: also validate and throw error if we don't see optionValue
         function (child) { return getComponentOptionValue(child.type); });
         if (new Set(values).size !== values.length) {

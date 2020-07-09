@@ -1,14 +1,13 @@
-import * as PropTypes from 'prop-types';
+/// <reference types="react" />
 import * as React from 'react';
 import Option from './Option';
-import OptionContext from './OptionContext';
 export interface Props {
     option: Option;
     defaultOption: React.ComponentClass | string;
 }
 export default class Selector extends React.Component<Props> {
     static contextTypes: {
-        optionContext: PropTypes.Requireable<OptionContext>;
+        optionContext: any;
     };
     private readonly optionContext;
     UNSAFE_componentWillMount(): void;
@@ -17,6 +16,5 @@ export default class Selector extends React.Component<Props> {
     }): void;
     componentWillUnmount(): void;
     render(): null;
-    private optionContextUpdate;
-    private updateOptionValues;
+    private updateOptionValues(nextProps?);
 }
